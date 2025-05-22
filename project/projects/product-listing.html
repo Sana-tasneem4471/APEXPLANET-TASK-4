@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Catalog | John Doe</title>
+  <link rel="stylesheet" href="/src/css/main.css">
+  <link rel="stylesheet" href="/src/css/products.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="light-theme">
+  <div class="theme-toggle">
+    <button id="themeToggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+    </button>
+  </div>
+
+  <header class="header" id="header">
+    <div class="container">
+      <div class="logo">JD</div>
+      <nav class="nav">
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/projects.html" class="active">Projects</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Shop Catalog</h1>
+        <p class="page-description">Browse through our collection of premium products.</p>
+      </div>
+    </section>
+
+    <section class="products-section">
+      <div class="container">
+        <div class="products-layout">
+          <aside class="products-sidebar">
+            <div class="sidebar-header">
+              <h2>Filters</h2>
+              <button id="clearFiltersBtn" class="btn btn-small">Clear All</button>
+            </div>
+            
+            <div class="filter-group">
+              <h3>Categories</h3>
+              <div class="filter-options">
+                <label class="filter-option">
+                  <input type="checkbox" name="category" value="electronics" checked>
+                  <span class="checkmark"></span>
+                  <span class="filter-text">Electronics</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="category" value="clothing" checked>
+                  <span class="checkmark"></span>
+                  <span class="filter-text">Clothing</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="category" value="books" checked>
+                  <span class="checkmark"></span>
+                  <span class="filter-text">Books</span>
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="category" value="home" checked>
+                  <span class="checkmark"></span>
+                  <span class="filter-text">Home & Kitchen</span>
+                </label>
+              </div>
+            </div>
+            
+            <div class="filter-group">
+              <h3>Price Range</h3>
+              <div class="range-slider">
+                <input type="range" id="priceRange" min="0" max="1000" value="1000" class="range-input">
+                <div class="range-value">
+                  <span>$0</span>
+                  <span id="priceValue">$1000</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="filter-group">
+              <h3>Rating</h3>
+              <div class="filter-options">
+                <label class="filter-option">
+                  <input type="radio" name="rating" value="4" checked>
+                  <span class="radio-mark"></span>
+                  <span class="filter-text">
+                    <span class="stars">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </span>
+                    & Up
+                  </span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="rating" value="3">
+                  <span class="radio-mark"></span>
+                  <span class="filter-text">
+                    <span class="stars">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </span>
+                    & Up
+                  </span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="rating" value="2">
+                  <span class="radio-mark"></span>
+                  <span class="filter-text">
+                    <span class="stars">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </span>
+                    & Up
+                  </span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="rating" value="0">
+                  <span class="radio-mark"></span>
+                  <span class="filter-text">All Ratings</span>
+                </label>
+              </div>
+            </div>
+          </aside>
+          
+          <div class="products-main">
+            <div class="products-header">
+              <div class="products-count">
+                <p id="productCount">Showing 0 products</p>
+              </div>
+              <div class="products-sort">
+                <label for="sortOrder">Sort by:</label>
+                <select id="sortOrder" class="sort-select">
+                  <option value="featured">Featured</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="rating-desc">Highest Rated</option>
+                  <option value="name-asc">Name: A to Z</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+              <!-- Products will be added dynamically by JavaScript -->
+            </div>
+            
+            <div id="noProductsFound" class="no-products-found">
+              <div class="empty-state-icon">
+                <i class="fas fa-search"></i>
+              </div>
+              <h3>No products found</h3>
+              <p>Try adjusting your filters to find what you're looking for.</p>
+              <button id="resetFiltersBtn" class="btn btn-primary">Reset Filters</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">JD</div>
+        <div class="footer-social">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 John Doe. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="/src/js/theme.js"></script>
+  <script type="module" src="/src/js/products.js"></script>
+</body>
+</html>

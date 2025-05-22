@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Master | John Doe</title>
+  <link rel="stylesheet" href="/src/css/main.css">
+  <link rel="stylesheet" href="/src/css/todo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="light-theme">
+  <div class="theme-toggle">
+    <button id="themeToggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+    </button>
+  </div>
+
+  <header class="header" id="header">
+    <div class="container">
+      <div class="logo">JD</div>
+      <nav class="nav">
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/projects.html" class="active">Projects</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Task Master</h1>
+        <p class="page-description">A feature-rich to-do list application with data persistence.</p>
+      </div>
+    </section>
+
+    <section class="todo-app">
+      <div class="container">
+        <div class="todo-container">
+          <div class="todo-sidebar">
+            <div class="todo-user">
+              <div class="user-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="user-info">
+                <h3>My Tasks</h3>
+                <p id="taskCounter">0 tasks</p>
+              </div>
+            </div>
+            <div class="todo-filters">
+              <h3>Filters</h3>
+              <ul class="filter-list">
+                <li>
+                  <button class="filter-item active" data-filter="all">
+                    <i class="fas fa-tasks"></i>
+                    <span>All Tasks</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="filter-item" data-filter="pending">
+                    <i class="far fa-circle"></i>
+                    <span>Pending</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="filter-item" data-filter="completed">
+                    <i class="far fa-check-circle"></i>
+                    <span>Completed</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="todo-categories">
+              <h3>Categories</h3>
+              <ul class="category-list">
+                <li>
+                  <button class="category-item" data-category="work">
+                    <span class="category-color work"></span>
+                    <span>Work</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="category-item" data-category="personal">
+                    <span class="category-color personal"></span>
+                    <span>Personal</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="category-item" data-category="shopping">
+                    <span class="category-color shopping"></span>
+                    <span>Shopping</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="category-item" data-category="other">
+                    <span class="category-color other"></span>
+                    <span>Other</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="todo-main">
+            <div class="todo-header">
+              <div class="todo-title">
+                <h2 id="currentFilter">All Tasks</h2>
+              </div>
+              <div class="todo-actions">
+                <button id="clearCompletedBtn" class="btn btn-small btn-danger">
+                  <i class="fas fa-trash-alt"></i>
+                  <span>Clear Completed</span>
+                </button>
+              </div>
+            </div>
+            
+            <div class="todo-input-container">
+              <form id="todoForm">
+                <div class="todo-input-wrapper">
+                  <input type="text" id="todoInput" placeholder="Add a new task..." autocomplete="off">
+                  <div class="todo-input-actions">
+                    <div class="category-selector">
+                      <select id="taskCategory">
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fas fa-plus"></i>
+                      <span>Add Task</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            
+            <div class="todo-list-container">
+              <ul id="todoList" class="todo-list">
+                <!-- Tasks will be added dynamically by JavaScript -->
+              </ul>
+              <div id="emptyState" class="empty-state">
+                <div class="empty-state-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>All caught up!</h3>
+                <p>You have no tasks to complete. Add a new task to get started.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">JD</div>
+        <div class="footer-social">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 John Doe. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="/src/js/theme.js"></script>
+  <script type="module" src="/src/js/todo.js"></script>
+</body>
+</html>
